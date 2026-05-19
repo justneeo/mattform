@@ -199,7 +199,8 @@
       margin-top:4px;
     }
 
-    button{
+    button,
+    .link-button{
       border:none;
       border-radius:14px;
       padding:14px 18px;
@@ -359,7 +360,8 @@
         flex-direction:column;
       }
 
-      .actions button{
+      .actions button,
+      .actions .link-button{
         width:100%;
       }
     }
@@ -371,7 +373,7 @@
       <div class="topbar">
         <div class="title">
           <h1 id="title">Affiliate Form</h1>
-          <p id="subtitle">WhatsApp: +49 151 23861083</p>
+          <p id="subtitle">Century.ON</p>
         </div>
 
         <div class="lang">
@@ -474,7 +476,6 @@
 
         <div class="actions">
           <button type="submit" class="primary" id="submitBtn">Send by WhatsApp</button>
-          <button type="button" class="secondary" id="copyBtn">Copy</button>
         </div>
       </form>
 
@@ -520,13 +521,12 @@
     const form = document.getElementById("telegramForm");
     const preview = document.getElementById("preview");
     const uiLanguage = document.getElementById("uiLanguage");
-    const copyBtn = document.getElementById("copyBtn");
     const app = document.getElementById("app");
 
     const translations = {
       en: {
         title: "Affiliate Form",
-        subtitle: "WhatsApp: +49 151 23861083",
+        subtitle: "Century.ON",
         uiLanguageLabel: "Language",
         planLabel: "Plan",
         firstNameLabel: "First name *",
@@ -543,8 +543,7 @@
         paymentMethodLabel: "Payment method *",
         paymentDetailLabel: "Payment details *",
         previewLabel: "Message preview",
-        submitBtn: "Send by WhatsApp",
-        copyBtn: "Copy message",
+        submitBtn: "Send",
         copied: "Copied",
         placeholders: {
           firstName: "First name",
@@ -669,8 +668,7 @@
         paymentMethodLabel: "Método de pago *",
         paymentDetailLabel: "Detalle de pago *",
         previewLabel: "Vista previa del mensaje",
-        submitBtn: "Enviar por WhatsApp",
-        copyBtn: "Copiar mensaje",
+        submitBtn: "Enviar",
         copied: "Copiado",
         placeholders: {
           firstName: "Nombre",
@@ -886,20 +884,6 @@
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    });
-
-    copyBtn.addEventListener("click", async function() {
-      try {
-        await navigator.clipboard.writeText(getMessage());
-        const oldText = t().copyBtn;
-        copyBtn.textContent = t().copied;
-        setTimeout(() => {
-          copyBtn.textContent = oldText;
-        }, 1200);
-      } catch {
-        preview.select();
-        document.execCommand("copy");
-      }
     });
 
     updateUIText();
