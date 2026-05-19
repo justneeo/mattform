@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Affiliate Intake</title>
+  <title>RED Affiliate Intake</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
       --input-focus:rgba(255,255,255,0.08);
       --button:#ffffff;
       --button-text:#050505;
-      --radius:20px;
       --shadow:0 20px 60px rgba(0,0,0,0.45);
     }
 
@@ -166,6 +165,12 @@
       border-color:var(--border-strong);
     }
 
+    input[readonly]{
+      color:#dcdce0;
+      opacity:.9;
+      cursor:not-allowed;
+    }
+
     select{
       appearance:none;
       -webkit-appearance:none;
@@ -199,8 +204,7 @@
       margin-top:4px;
     }
 
-    button,
-    .link-button{
+    button{
       border:none;
       border-radius:14px;
       padding:14px 18px;
@@ -208,7 +212,6 @@
       font-weight:600;
       cursor:pointer;
       transition:.2s ease;
-      text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -217,23 +220,13 @@
     .primary{
       background:var(--button);
       color:var(--button-text);
+      width:100%;
     }
 
     .primary:hover{
       opacity:.92;
+      transform:translateY(-1px);
     }
-
-    .secondary{
-      background:rgba(255,255,255,0.06);
-      color:var(--text);
-      border:1px solid var(--border);
-    }
-
-    .secondary:hover{
-      background:rgba(255,255,255,0.09);
-    }
-
-    
 
     .rtl{
       direction:rtl;
@@ -355,15 +348,6 @@
       form{
         grid-template-columns:1fr;
       }
-
-      .actions{
-        flex-direction:column;
-      }
-
-      .actions button,
-      .actions .link-button{
-        width:100%;
-      }
     }
   </style>
 </head>
@@ -372,8 +356,8 @@
     <div class="card" id="app">
       <div class="topbar">
         <div class="title">
-          <h1 id="title">Affiliate Form</h1>
-          <p id="subtitle">Century.ON</p>
+          <h1 id="title">RED Affiliate Form</h1>
+          <p id="subtitle">Affiliate intake</p>
         </div>
 
         <div class="lang">
@@ -392,6 +376,7 @@
           <label data-i18n="planLabel">Plan</label>
           <input type="text" value="Standard" readonly />
         </div>
+
         <div class="field">
           <label for="firstName" data-i18n="firstNameLabel">First name *</label>
           <input id="firstName" name="firstName" type="text" placeholder="First name" required autocomplete="given-name" />
@@ -412,8 +397,8 @@
           <input id="telegramId" name="telegramId" type="text" inputmode="numeric" pattern="[0-9]+" placeholder="123456789" required />
           <span class="hint" data-i18n="telegramHint">Only the numeric Telegram ID, not @username.</span>
           <div class="helper-links">
-            <a class="helper-link" id="telegramHelper" href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" data-i18n="telegramHelper">Find your Telegram ID here</a>
-            <a class="helper-link" id="telegramDownload" href="https://telegram.org/apps" target="_blank" rel="noopener noreferrer" data-i18n="telegramDownload">Download Telegram here</a>
+            <a class="helper-link" href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" data-i18n="telegramHelper">Find your Telegram ID here</a>
+            <a class="helper-link" href="https://telegram.org/apps" target="_blank" rel="noopener noreferrer" data-i18n="telegramDownload">Download Telegram here</a>
           </div>
         </div>
 
@@ -475,7 +460,7 @@
         </div>
 
         <div class="actions">
-          <button type="submit" class="primary" id="submitBtn">Send by WhatsApp</button>
+          <button type="submit" class="primary" id="submitBtn">Send</button>
         </div>
       </form>
 
@@ -525,8 +510,8 @@
 
     const translations = {
       en: {
-        title: "Affiliate Form",
-        subtitle: "Century.ON",
+        title: "RED Affiliate Form",
+        subtitle: "Affiliate intake",
         uiLanguageLabel: "Language",
         planLabel: "Plan",
         firstNameLabel: "First name *",
@@ -544,7 +529,6 @@
         paymentDetailLabel: "Payment details *",
         previewLabel: "Message preview",
         submitBtn: "Send",
-        copied: "Copied",
         placeholders: {
           firstName: "First name",
           lastName: "Last name",
@@ -641,17 +625,13 @@
               <li>Actively support network growth</li>
             </ul>
           `,
-          payout: `
-            <p>We settle the referral bonus monthly. The billing section gives you full transparency.</p>
-          `,
-          centurion: `
-            <p>Centurion QR partners drive the RED network forward with their own team. They can pick their team members and issue their own QR codes.</p>
-          `
+          payout: `<p>We settle the referral bonus monthly. The billing section gives you full transparency.</p>`,
+          centurion: `<p>Centurion QR partners drive the RED network forward with their own team. They can pick their team members and issue their own QR codes.</p>`
         }
       },
       es: {
-        title: "Formulario de Afiliado",
-        subtitle: "@invictuzzzzz",
+        title: "Formulario de Afiliado RED",
+        subtitle: "Registro de afiliado",
         uiLanguageLabel: "Idioma",
         planLabel: "Plan",
         firstNameLabel: "Nombre *",
@@ -669,7 +649,6 @@
         paymentDetailLabel: "Detalle de pago *",
         previewLabel: "Vista previa del mensaje",
         submitBtn: "Enviar",
-        copied: "Copiado",
         placeholders: {
           firstName: "Nombre",
           lastName: "Apellido",
@@ -766,12 +745,8 @@
               <li>Apoyar activamente el crecimiento de la red</li>
             </ul>
           `,
-          payout: `
-            <p>El bonus de referidos se liquida mensualmente. La sección de facturación ofrece transparencia completa.</p>
-          `,
-          centurion: `
-            <p>Los partners QR Centurion impulsan la red RED con su propio equipo. Pueden elegir a los miembros de su equipo y emitir sus propios QR Codes.</p>
-          `
+          payout: `<p>El bonus de referidos se liquida mensualmente. La sección de facturación ofrece transparencia completa.</p>`,
+          centurion: `<p>Los partners QR Centurion impulsan la red RED con su propio equipo. Pueden elegir a los miembros de su equipo y emitir sus propios QR Codes.</p>`
         }
       }
     };
@@ -786,12 +761,12 @@
 
     function setText(selector, value) {
       const element = document.querySelector(selector);
-      if (element) element.textContent = value;
+      if (element) element.textContent = value || "";
     }
 
     function setPlaceholder(id, value) {
       const element = document.getElementById(id);
-      if (element) element.placeholder = value;
+      if (element) element.placeholder = value || "";
     }
 
     function updateUIText() {
@@ -802,11 +777,10 @@
       document.documentElement.dir = isRTL ? "rtl" : "ltr";
       app.classList.toggle("rtl", isRTL);
 
-      document.getElementById("title").textContent = dict.title;
-      document.getElementById("subtitle").textContent = dict.subtitle;
-      document.getElementById("uiLanguageLabel").textContent = dict.uiLanguageLabel;
-      document.getElementById("submitBtn").textContent = dict.submitBtn;
-      document.getElementById("copyBtn").textContent = dict.copyBtn;
+      setText("#title", dict.title);
+      setText("#subtitle", dict.subtitle);
+      setText("#uiLanguageLabel", dict.uiLanguageLabel);
+      setText("#submitBtn", dict.submitBtn);
 
       setText('[data-i18n="planLabel"]', dict.planLabel);
       setText('[data-i18n="firstNameLabel"]', dict.firstNameLabel);
@@ -832,8 +806,8 @@
       setText('[data-i18n="faqCenturionTitle"]', dict.faqCenturionTitle);
 
       document.querySelectorAll('[data-faq]').forEach((element) => {
-        const key = element.getAttribute('data-faq');
-        element.innerHTML = dict.faqs[key] || '';
+        const key = element.getAttribute("data-faq");
+        element.innerHTML = dict.faqs[key] || "";
       });
 
       setPlaceholder("firstName", dict.placeholders.firstName);
@@ -869,7 +843,23 @@
     }
 
     function updatePreview() {
-      preview.value = getMessage();
+      if (preview) preview.value = getMessage();
+    }
+
+    function openWhatsApp() {
+      const encoded = encodeURIComponent(getMessage());
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    }
+
+    function runSelfTests() {
+      console.assert(Boolean(form), "Form exists");
+      console.assert(Boolean(preview), "Preview textarea exists");
+      console.assert(Boolean(uiLanguage), "Language selector exists");
+      console.assert(Boolean(document.getElementById("submitBtn")), "Submit button exists");
+      console.assert(!document.getElementById("copyBtn"), "copyBtn was intentionally removed");
+      console.assert(WHATSAPP_NUMBER === "4915123861083", "WhatsApp destination is +49 151 23861083");
+      console.assert(getMessage().includes("Plan: Standard"), "Message includes Standard plan");
     }
 
     form.addEventListener("input", updatePreview);
@@ -879,14 +869,11 @@
     form.addEventListener("submit", function(e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-
-      const encoded = encodeURIComponent(getMessage());
-      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      openWhatsApp();
     });
 
     updateUIText();
+    runSelfTests();
   </script>
 </body>
 </html>
