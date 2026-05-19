@@ -105,6 +105,26 @@
       color:var(--muted);
     }
 
+    .helper-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 14px;
+      margin-top:7px;
+    }
+
+    .helper-link{
+      font-size:12px;
+      color:#ffffff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      opacity:.88;
+      width:max-content;
+    }
+
+    .helper-link:hover{
+      opacity:1;
+    }
+
     form{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -389,6 +409,10 @@
           <label for="telegramId" data-i18n="telegramIdLabel">Telegram ID *</label>
           <input id="telegramId" name="telegramId" type="text" inputmode="numeric" pattern="[0-9]+" placeholder="123456789" required />
           <span class="hint" data-i18n="telegramHint">Only the numeric Telegram ID, not @username.</span>
+          <div class="helper-links">
+            <a class="helper-link" id="telegramHelper" href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" data-i18n="telegramHelper">Find your Telegram ID here</a>
+            <a class="helper-link" id="telegramDownload" href="https://telegram.org/apps" target="_blank" rel="noopener noreferrer" data-i18n="telegramDownload">Download Telegram here</a>
+          </div>
         </div>
 
         <div class="field full">
@@ -510,6 +534,8 @@
         phoneLabel: "Phone number *",
         telegramIdLabel: "Telegram ID *",
         telegramHint: "Only the numeric Telegram ID, not @username.",
+        telegramHelper: "Find your Telegram ID here",
+        telegramDownload: "Download Telegram here",
         emailLabel: "E-Mail *",
         roleLabel: "Role *",
         workplaceLabel: "Workplace *",
@@ -634,6 +660,8 @@
         phoneLabel: "Teléfono *",
         telegramIdLabel: "Telegram ID *",
         telegramHint: "Solo el ID numérico de Telegram, no @usuario.",
+        telegramHelper: "Encuentra tu Telegram ID aquí",
+        telegramDownload: "Descarga Telegram aquí",
         emailLabel: "E-Mail *",
         roleLabel: "Rol *",
         workplaceLabel: "Lugar de trabajo *",
@@ -788,6 +816,8 @@
       setText('[data-i18n="phoneLabel"]', dict.phoneLabel);
       setText('[data-i18n="telegramIdLabel"]', dict.telegramIdLabel);
       setText('[data-i18n="telegramHint"]', dict.telegramHint);
+      setText('[data-i18n="telegramHelper"]', dict.telegramHelper);
+      setText('[data-i18n="telegramDownload"]', dict.telegramDownload);
       setText('[data-i18n="emailLabel"]', dict.emailLabel);
       setText('[data-i18n="roleLabel"]', dict.roleLabel);
       setText('[data-i18n="workplaceLabel"]', dict.workplaceLabel);
